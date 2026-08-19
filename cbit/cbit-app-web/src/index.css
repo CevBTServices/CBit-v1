@@ -376,73 +376,365 @@ main {
    ============================================================ */
 .site-footer {
   background-color: #AC0000;
-  color: #fdfdfd;
-  padding: 25px 0 20px 0;
-  font-size: 13px;
+  color: #fff;
+  padding: 40px 0 0 0;
+  font-size: 14px;
 }
 
-.footer-content {
+.footer-top {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding: 0 40px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.footer-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.footer-col h4 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.contact-item {
-  margin: 0;
-  color: #fdfdfd;
-  font-weight: 500;
+.brand-col .footer-logo img {
+  height: 50px;
+  margin-bottom: 15px;
+  filter: url('#black-to-white-red');
 }
 
-.contact-item a {
-  color: #fdfdfd;
+.brand-col .footer-desc {
+  color: #ccc;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 
-.contact-item a:hover {
-  border-bottom: 1px solid #fdfdfd;
+.linkedin-btn:hover {
+  background-color: #fff;
+  color: #1a1a1a;
 }
 
-.footer-policies {
-  margin-top: 8px;
-  color: rgba(253, 253, 253, 0.7);
-  font-size: 12px;
-  cursor: pointer;
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.footer-socials {
-  margin-top: 12px;
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-contact-item {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid #fdfdfd;
-  border-radius: 50%;
-  color: #fdfdfd;
+.footer-bottom-right a, .btn-cookie-trigger {
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-size: 16px;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
-.social-icon:hover {
-  background-color: #1A1A1A;
-  color: #AC0000;
+.footer-bottom-right a:hover, .btn-cookie-trigger:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 20px 30px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+  .footer-bottom-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   COOKIE CONSENT
+   ============================================================ */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.2);
+}
+
+.cookie-banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.cookie-banner-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.cookie-banner-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-cookie-settings {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.btn-cookie-settings:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.btn-cookie-accept {
+  background: #AC0000;
+  border: 1px solid #AC0000;
+  color: #fff;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.btn-cookie-accept:hover {
+  background: #880000;
+}
+
+.cookie-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.cookie-modal {
+  background: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+.cookie-modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cookie-modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.cookie-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.cookie-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cookie-modal-desc {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.cookie-option {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.cookie-option-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cookie-option-header h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.cookie-option p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.cookie-modal-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-cookie-reject {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-cookie-reject:hover {
+  background: #eee;
+}
+
+.btn-cookie-save {
+  background: #AC0000;
+  color: #fff;
+  border: 1px solid #AC0000;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-cookie-save:hover {
+  background: #880000;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #AC0000;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+.slider.round {
+  border-radius: 24px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .cookie-banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* ============================================================
@@ -4185,6 +4477,17 @@ main {
   }
 }
 
+.cozumler-solution-block {
+  background-color: #1A1A1A;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 100px;
+}
 
 .neden-fark-card {
   background: #2c2c2c;
@@ -4377,15 +4680,8 @@ input:focus, textarea:focus, select:focus {
    ============================================================ */
 p, 
 .section-lead, 
-.solution-card p, 
-.card p, 
 .about-intro-text p, 
-.fark-card p, 
-.neden-deger-card p, 
-.process-step-card p, 
-.cozumler-item-text,
-.why-us-card p,
-.solutions-kadro-grid-card p {
+.cozumler-item-text {
   text-align: justify !important;
   text-justify: inter-word;
   hyphens: auto;
@@ -4409,8 +4705,17 @@ p,
    ALIGNMENT FIXES 
    ============================================================ */
 .why-us-header p,
-.why-us-header .section-lead {
+.why-us-header .section-lead,
+.solution-card p, 
+.card p, 
+.fark-card p, 
+.neden-deger-card p, 
+.process-step-card p,
+.why-us-card p,
+.solutions-kadro-grid-card p {
   text-align: left !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
 }
 
 /* Neden CBIT hero subtitle alignment */

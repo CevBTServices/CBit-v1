@@ -8,6 +8,7 @@ interface AyarlarState {
   projelerAktif: boolean;
   haberlerAktif: boolean;
   isOrtaklariAktif: boolean;
+  kariyerAktif: boolean;
 }
 
 export default function AdminAyarlar() {
@@ -16,6 +17,7 @@ export default function AdminAyarlar() {
     projelerAktif: false,
     haberlerAktif: true,
     isOrtaklariAktif: true,
+    kariyerAktif: true,
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -26,6 +28,7 @@ export default function AdminAyarlar() {
         projelerAktif: ayarlar.projelerAktif,
         haberlerAktif: ayarlar.haberlerAktif,
         isOrtaklariAktif: ayarlar.isOrtaklariAktif ?? true,
+        kariyerAktif: ayarlar.kariyerAktif ?? true,
       });
     }
   }, [ayarlar, contextLoading]);
@@ -113,6 +116,18 @@ export default function AdminAyarlar() {
               id="isOrtaklariAktif"
               name="isOrtaklariAktif"
               checked={formData.isOrtaklariAktif}
+              onChange={handleChange}
+              style={{ width: "20px", height: "20px", cursor: "pointer" }}
+            />
+          </div>
+
+          <div className="form-group mt-base" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #ccc", paddingBottom: "10px" }}>
+            <label htmlFor="kariyerAktif" style={{ margin: 0, fontWeight: "bold" }}>Kariyer Sayfası Aktif (Footer)</label>
+            <input
+              type="checkbox"
+              id="kariyerAktif"
+              name="kariyerAktif"
+              checked={formData.kariyerAktif}
               onChange={handleChange}
               style={{ width: "20px", height: "20px", cursor: "pointer" }}
             />

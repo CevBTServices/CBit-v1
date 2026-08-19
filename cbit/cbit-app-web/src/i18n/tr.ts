@@ -11,11 +11,39 @@ export const tr = {
   },
   footer: {
     adres:
-      "Rüzgarlıbahçe Mah. Çam Pınarı Sk. No:1 34805 Kavacık Ticaret Merkezi Beykoz/İ​​​stanbul",
-    aydinlatmaMetni: "Aydınlatma Metni",
+      "Rüzgarlıbahçe Mah. Çam Pınarı Sk. No:1, 34805, Kavacık Ticaret Merkezi, Beykoz / İstanbul",
+    aydinlatmaMetni: "KVKK Aydınlatma Metni",
     cerezPolitikasi: "Çerez Politikası",
-    eposta: "mail: info@cbit.com.tr",
-    telefon: "T: +90 216 333 6161",
+    eposta: "info@cbit.com.tr",
+    telefon: "+90 216 333 6161",
+    kurumsal: "KURUMSAL",
+    cozumler: "ÇÖZÜMLER",
+    iletisimBaslik: "İLETİŞİM",
+    yasalBilgiler: "Yasal Bilgiler",
+    cerezAyarlari: "Çerez Ayarları",
+    aciklama: "Kurumsal teknoloji çözümleri geliştiren, İstanbul merkezli bir yazılım ve danışmanlık şirketiyiz.",
+    takipEdin: "LinkedIn'de Takip Edin",
+    cozumlerListesi: {
+      sunucu: "Sunucu ve Bulut Çözümleri",
+      depolama: "Depolama ve Veri Yönetimi",
+      ag: "Ağ ve Veri Merkezi",
+      yapayZeka: "Yapay Zeka Altyapısı",
+    }
+  },
+  cookieBanner: {
+    metin: "Deneyimlerinizi kişiselleştirmek amacıyla KVKK uyarınca kullanılan çerezleri, internet sitemizi kullanarak kabul etmiş sayılırsınız. Daha fazla bilgi için Yasal Metinler'i ziyaret edebilirsiniz.",
+    ayarlar: "AYARLAR",
+    izinVer: "İZİN VER"
+  },
+  cookieModal: {
+    baslik: "Kişisel Verilerin Korunması ve Çerez Politikası",
+    aciklama: "Deneyimlerinizi kişiselleştirmek amacıyla KVKK uyarınca kullanılan çerezleri, internet sitemizi kullanarak kabul etmiş sayılırsınız. Daha fazla bilgi için Yasal Metinler'i inceleyebilirsiniz.",
+    kisiselVeriler: "Kişisel Verilerin Korunması",
+    kisiselVerilerAciklama: "CBIT Teknoloji olarak kişisel verilerinizin güvenliği hususuna azami gayreti ve hassasiyeti göstermekteyiz. Mevzuat gereği veri sorumlusu sıfatıyla, iş ve hizmet ilişkimiz kapsamında edinilen her türlü özel ve genel kişisel veriler, Kişisel Verilerin Korunması Kanunu'na uygun olarak kaydedilecek, saklanacak ve işlenecektir.",
+    cerezPolitikasi: "Çerez Politikası",
+    cerezPolitikasiAciklama: "Web sitemizde, veri toplamayı etkinleştirmek için cihazınıza yerleştirilen dosyalar olan çerezler kullanılabilir. Çerezleri kullanmamıza izin verirseniz web sitemizde nasıl gezindiğinizi daha iyi anlayabilmek ve katılımınızı değerlendirebilmek amacıyla çerezler tarafından toplanan bilgileri kullanacağız.",
+    tumunuReddet: "Tümünü Reddet",
+    kaydet: "Seçimleri Kaydet / Kabul Et"
   },
   anasayfa: {
     hero: {
@@ -119,9 +147,9 @@ export const tr = {
         },
         {
           no: "02",
-          baslik: "Sertifikalı Uzman Ekip",
+          baslik: "Uzman Ekip",
           tanim:
-            "Alanında sertifikalı mühendislerden oluşan deneyimli teknik kadromuzla yanınızdayız.",
+            "Alanında uzman mühendislerden oluşan deneyimli teknik kadromuzla yanınızdayız.",
         },
         {
           no: "03",

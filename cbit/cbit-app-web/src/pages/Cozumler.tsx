@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useLanguage } from "../context/useLanguage";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Server,
   Cloud,
@@ -18,6 +19,22 @@ import {
 
 export default function Cozumler() {
   const { t } = useLanguage();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        // A slight timeout ensures the page layout is fully calculated before scrolling
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   const getIcon = (iconName: string) => {
     switch (iconName) {

@@ -66,6 +66,7 @@ model SiteAyarlari {
   projelerAktif    Boolean  @default(false)
   haberlerAktif    Boolean  @default(true)
   isOrtaklariAktif Boolean  @default(true)
+  kariyerAktif     Boolean  @default(true)
   updatedAt        DateTime @updatedAt
 }
 

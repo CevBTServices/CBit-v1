@@ -55,14 +55,18 @@ function AppRoutes() {
   );
 }
 
+import { CookieProvider } from "./context/CookieContext";
+
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <SiteAyarlariProvider>
-        <Suspense fallback={<LoadingFallback />}>
-          <AppRoutes />
-        </Suspense>
+        <CookieProvider>
+          <Suspense fallback={<LoadingFallback />}>
+            <AppRoutes />
+          </Suspense>
+        </CookieProvider>
       </SiteAyarlariProvider>
     </BrowserRouter>
   );

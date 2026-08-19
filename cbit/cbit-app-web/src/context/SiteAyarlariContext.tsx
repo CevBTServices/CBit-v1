@@ -4,6 +4,7 @@ interface SiteAyarlari {
   projelerAktif: boolean;
   haberlerAktif: boolean;
   isOrtaklariAktif: boolean;
+  kariyerAktif: boolean;
 }
 
 interface SiteAyarlariContextValue {
@@ -15,6 +16,7 @@ const defaultAyarlar: SiteAyarlari = {
   projelerAktif: false,
   haberlerAktif: true,
   isOrtaklariAktif: true,
+  kariyerAktif: true,
 };
 
 const SiteAyarlariContext = createContext<SiteAyarlariContextValue>({

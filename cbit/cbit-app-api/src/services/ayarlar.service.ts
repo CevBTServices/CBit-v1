@@ -4,6 +4,7 @@ interface IAyarlarUpdateData {
   projelerAktif?: boolean;
   haberlerAktif?: boolean;
   isOrtaklariAktif?: boolean;
+  kariyerAktif?: boolean;
 }
 
 /**
@@ -18,6 +19,7 @@ const getOrCreateAyarlar = async () => {
       projelerAktif: false,
       haberlerAktif: true,
       isOrtaklariAktif: true,
+      kariyerAktif: true,
     },
   });
 };

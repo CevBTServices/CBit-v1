@@ -3,12 +3,14 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Globe, ChevronDown } from "lucide-react";
 import { useLanguage } from "../context/useLanguage";
 import { useSiteAyarlari } from "../context/SiteAyarlariContext";
-
-
+import { useCookies } from "../context/CookieContext";
+import CookieBanner from "./CookieBanner";
+import CookieModal from "./CookieModal";
 export default function Layout() {
   const navigate = useNavigate();
   const { lang, t, setLang } = useLanguage();
   const { ayarlar } = useSiteAyarlari();
+  const { setModalOpen } = useCookies();
   
   const renderWithSpacedCBIT = (text: string) => {
     if (!text || typeof text !== 'string') return text;
@@ -279,24 +281,67 @@ export default function Layout() {
       </main>
 
       <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-contact-info">
-            <p className="contact-item">{t.footer.adres}</p>
-            <p className="contact-item">{t.footer.eposta}</p>
-            <p className="contact-item">{t.footer.telefon}</p>
-            <p className="footer-policies">
-              <NavLink to="/kisisel-verilerin-korunmasi" style={{ color: "inherit", textDecoration: "none" }} className={({ isActive }) => (isActive ? "active-link" : "")}>{(t as any).footer.aydinlatmaMetni}</NavLink>
-              {" / "}
-              <NavLink to="/cerez-politikasi" style={{ color: "inherit", textDecoration: "none" }} className={({ isActive }) => (isActive ? "active-link" : "")}>{(t as any).footer.cerezPolitikasi}</NavLink>
-            </p>
-          </div>
-          <div className="footer-socials">
-            <a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn" style={{ display: "inline-flex", alignItems: "center" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        <div className="footer-top">
+          <div className="footer-col brand-col">
+            <div className="footer-logo">
+              <img src="/cbit-logo.png" alt="CBIT Logo" />
+            </div>
+            <a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer" className="linkedin-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              {(t as any).footer.takipEdin}
             </a>
+          </div>
+
+          <div className="footer-col links-col">
+            <h4>{(t as any).footer.kurumsal}</h4>
+            <ul className="footer-links">
+              <li><NavLink to="/hakkimizda">{t.nav.hakkimizda}</NavLink></li>
+              <li><NavLink to="/neden-biz">{t.nav.cozumler}</NavLink></li>
+              {ayarlar.kariyerAktif && (
+                <li><NavLink to="/kariyer">Kariyer</NavLink></li>
+              )}
+              {ayarlar.haberlerAktif && (
+                <li><NavLink to="/haberler">{t.nav.haberler}</NavLink></li>
+              )}
+              <li><NavLink to="/iletisim">{t.nav.iletisim}</NavLink></li>
+            </ul>
+          </div>
+
+          <div className="footer-col links-col">
+            <h4>{(t as any).footer.cozumler}</h4>
+            <ul className="footer-links">
+              <li><NavLink to="/cozumler#sunucu-bulut">{(t as any).footer.cozumlerListesi.sunucu}</NavLink></li>
+              <li><NavLink to="/cozumler#depolama">{(t as any).footer.cozumlerListesi.depolama}</NavLink></li>
+              <li><NavLink to="/cozumler#veri-merkezi">{(t as any).footer.cozumlerListesi.ag}</NavLink></li>
+              <li><NavLink to="/cozumler#yapay-zeka">{(t as any).footer.cozumlerListesi.yapayZeka}</NavLink></li>
+            </ul>
+          </div>
+
+          <div className="footer-col contact-col">
+            <h4>{(t as any).footer.iletisimBaslik}</h4>
+            <p className="footer-contact-item">{(t as any).footer.adres}</p>
+            <p className="footer-contact-item">{(t as any).footer.eposta}</p>
+            <p className="footer-contact-item">{(t as any).footer.telefon}</p>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <div className="footer-bottom-left">
+            <p>© {new Date().getFullYear()} CBIT Technology. All rights reserved.</p>
+          </div>
+          <div className="footer-bottom-right">
+            <span className="yasal-title">{(t as any).footer.yasalBilgiler} | </span>
+            <NavLink to="/kisisel-verilerin-korunmasi">{(t as any).footer.aydinlatmaMetni}</NavLink> | 
+            <NavLink to="/cerez-politikasi">{(t as any).footer.cerezPolitikasi}</NavLink> | 
+            <button className="btn-cookie-trigger" onClick={() => setModalOpen(true)}>
+              {(t as any).footer.cerezAyarlari}
+            </button>
           </div>
         </div>
       </footer>
+
+      <CookieBanner />
+      <CookieModal />
     </div>
   );
 }

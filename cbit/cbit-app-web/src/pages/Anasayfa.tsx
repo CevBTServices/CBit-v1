@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  Award,
   ClipboardCheck,
   Cloud,
-  Compass,
   Cpu,
-  Gauge,
   Headphones,
   Server,
   Shield,
-  Target,
 } from "lucide-react";
 import { useLanguage } from "../context/useLanguage";
 import { useSiteAyarlari } from "../context/SiteAyarlariContext";
@@ -23,13 +19,6 @@ const solutionIcons = [
   Cpu,
   Headphones,
   ClipboardCheck,
-];
-
-const whyUsIcons = [
-  Gauge,
-  Award,
-  Compass,
-  Target,
 ];
 
 
@@ -119,19 +108,9 @@ export default function Anasayfa() {
           <div className="why-us-main-layout">
             <div className="why-us-grid">
               {t.anasayfa.nedenCbit.maddeler.map((item, idx) => {
-                const IconComp = whyUsIcons[idx] || Compass;
                 return (
                   <div key={idx} className="card why-us-card">
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
                       <div className="why-us-number">{item.no}</div>
-                      <IconComp size={24} color="#AC0000" />
-                    </div>
                     <h3>{item.baslik}</h3>
                     <p>{item.tanim}</p>
                   </div>

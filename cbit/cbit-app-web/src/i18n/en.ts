@@ -13,11 +13,39 @@ export const en: Translations = {
   },
   footer: {
     adres:
-      "Rüzgarlıbahçe Mah. Çam Pınarı Sk. No:1 34805 Kavacık Ticaret Merkezi Beykoz/İstanbul",
-    aydinlatmaMetni: "Clarification Text",
+      "Rüzgarlıbahçe Mah. Çam Pınarı Sk. No:1, 34805, Kavacık Ticaret Merkezi, Beykoz / İstanbul",
+    aydinlatmaMetni: "PDPL Clarification Text",
     cerezPolitikasi: "Cookie Policy",
-    eposta: "mail: info@cbit.com.tr",
-    telefon: "T: +90 216 333 6161",
+    eposta: "info@cbit.com.tr",
+    telefon: "+90 216 333 6161",
+    kurumsal: "CORPORATE",
+    cozumler: "SOLUTIONS",
+    iletisimBaslik: "CONTACT",
+    yasalBilgiler: "Legal Information",
+    cerezAyarlari: "Cookie Settings",
+    aciklama: "We are an Istanbul-based software and consulting company developing corporate technology solutions.",
+    takipEdin: "Follow us on LinkedIn",
+    cozumlerListesi: {
+      sunucu: "Server and Cloud Solutions",
+      depolama: "Storage and Data Management",
+      ag: "Network and Data Center",
+      yapayZeka: "AI Infrastructure",
+    }
+  },
+  cookieBanner: {
+    metin: "By using our website, you are considered to have accepted the cookies used in accordance with the PDPL to personalize your experience. For more information, you can visit Legal Texts.",
+    ayarlar: "SETTINGS",
+    izinVer: "ALLOW"
+  },
+  cookieModal: {
+    baslik: "Protection of Personal Data and Cookie Policy",
+    aciklama: "By using our website, you are considered to have accepted the cookies used in accordance with the PDPL to personalize your experience. For more information, you can review the Legal Texts.",
+    kisiselVeriler: "Protection of Personal Data",
+    kisiselVerilerAciklama: "As CBIT Technology, we show maximum effort and sensitivity to the security of your personal data. As the data controller per legislation, all kinds of special and general personal data obtained within the scope of our business and service relationship will be recorded, stored and processed in accordance with the Law on the Protection of Personal Data.",
+    cerezPolitikasi: "Cookie Policy",
+    cerezPolitikasiAciklama: "Files called cookies, which are placed on your device to enable data collection, may be used on our website. If you allow us to use cookies, we will use the information collected by cookies to better understand how you navigate our website and evaluate your participation.",
+    tumunuReddet: "Reject All",
+    kaydet: "Save Choices / Accept"
   },
   anasayfa: {
     hero: {
@@ -121,9 +149,9 @@ export const en: Translations = {
         },
         {
           no: "02",
-          baslik: "Certified Expert Team",
+          baslik: "Expert Team",
           tanim:
-            "We stand by you with an experienced technical team of field-certified engineers.",
+            "We stand by you with an experienced technical team of expert engineers.",
         },
         {
           no: "03",

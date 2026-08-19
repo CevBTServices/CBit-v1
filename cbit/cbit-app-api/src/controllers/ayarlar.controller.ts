@@ -13,8 +13,8 @@ const getAyarlarHandler = async (_req: Request, res: Response): Promise<void> =>
 
 const updateAyarlarHandler = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { projelerAktif, haberlerAktif, isOrtaklariAktif } = req.body as { projelerAktif?: boolean; haberlerAktif?: boolean; isOrtaklariAktif?: boolean };
-    const ayarlar = await updateAyarlar({ projelerAktif, haberlerAktif, isOrtaklariAktif });
+    const { projelerAktif, haberlerAktif, isOrtaklariAktif, kariyerAktif } = req.body as { projelerAktif?: boolean; haberlerAktif?: boolean; isOrtaklariAktif?: boolean; kariyerAktif?: boolean };
+    const ayarlar = await updateAyarlar({ projelerAktif, haberlerAktif, isOrtaklariAktif, kariyerAktif });
     res.status(HTTP_STATUS_CODE.OK).json(ayarlar);
   } catch (error) {
     res.status(HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR).json({ message: 'Ayarlar güncellenemedi.' });
