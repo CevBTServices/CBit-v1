@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/image102.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CDC | Cevahir Data Center</title>
+    <script type="module" crossorigin src="/assets/index-CuDmedr1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-T8qCCT9G.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"de6810e90f1143bb8c60f27e5ffc6b44","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

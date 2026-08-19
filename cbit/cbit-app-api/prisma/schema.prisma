@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(uuid()) @db.Uuid
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Haberler{
+  id String           @id @default(uuid()) @db.Uuid
+  haberAdi String
+  haberAdiEn String?
+  haberDetayi String
+  haberDetayiEn String?
+  haberResmi String
+  createdAt DateTime @default(now())
+
+  // Liste isteklerindeki azalan sıralamaları (createdAt DESC) hızlandırmak için indeks
+  @@index([createdAt(sort: Desc)])
+}
+
+model Message {
+  id        String   @id @default(uuid()) @db.Uuid
+  adSoyad   String
+  eposta    String
+  konu      String
+  mesaj     String
+  createdAt DateTime @default(now())
+
+  // Liste isteklerindeki azalan sıralamaları (createdAt DESC) hızlandırmak için indeks
+  @@index([createdAt(sort: Desc)])
+}
+
+model Proje {
+  id                String   @id @default(uuid()) @db.Uuid
+  projeAdi          String
+  projeAdiEn        String?
+  projeDetayi       String?
+  projeDetayiEn     String?
+  projeResmi        String?
+  beyazAlan         String?
+  sertifikasyon     String?
+  itGucu            String?
+  toplamKuruluGuc   String?
+  projeSuresi       String?
+  toplamInsaatAlani String?
+  durum             String?
+  durumEn           String?
+  createdAt         DateTime @default(now())
+
+  // Liste isteklerindeki azalan sıralamaları (createdAt DESC) hızlandırmak için indeks
+  @@index([createdAt(sort: Desc)])
+}
+
+model SiteAyarlari {
+  id               String   @id @default(uuid()) @db.Uuid
+  projelerAktif    Boolean  @default(false)
+  haberlerAktif    Boolean  @default(true)
+  isOrtaklariAktif Boolean  @default(true)
+  updatedAt        DateTime @updatedAt
+}
+
+
+
+model IsOrtagi {
+  id        String   @id @default(uuid()) @db.Uuid
+  adi       String
+  resim     String
+  kategori  String?
+  sira      Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([sira(sort: Asc), createdAt(sort: Desc)])
+}
+

@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TodoStatus {
+  pending
+  inProgress
+  completed
+  cancelled
+}
+
+enum Priority {
+  low
+  medium
+  high
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  uuid         String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String   @db.VarChar(250)
+  email        String   @unique
+  password     String   @db.VarChar(250)
+  createdAt    DateTime @default(now())
+  creatorUser  Todos[]  @relation("CreatorUser")
+  assignedUser Todos[]  @relation("AssignedUser")
+  Notes        Notes[]
+  Tag          Tag[]
+
+  @@map("user")
+}
+
+model Todos {
+  id             Int        @id @default(autoincrement())
+  uuid           String     @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title          String
+  description    String?
+  status         TodoStatus
+  priority       Priority
+  isPinned       Boolean?   @default(false)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  dueDate        DateTime
+  userId         Int        @map("user_id")
+  assignedUserId Int?       @map("assigned_user_id")
+
+  user         User      @relation("CreatorUser", fields: [userId], references: [id])
+  assignedUser User?     @relation("AssignedUser", fields: [assignedUserId], references: [id])
+  todos        TodoTag[]
+}
+
+model Notes {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title     String
+  content   String?
+  priority  Priority
+  isPinned  Boolean? @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    Int      @map("user_id")
+
+  user  User      @relation(fields: [userId], references: [id])
+  notes NoteTag[]
+}
+
+model Tag {
+  id     Int     @id @default(autoincrement())
+  uuid   String  @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name   String
+  color  String? @default("gray")
+  userId Int     @map("user_id")
+
+  user User @relation(fields: [userId], references: [id])
+
+  todos TodoTag[]
+  notes NoteTag[]
+}
+
+model TodoTag {
+  todoId Int
+  tagId  Int
+  uuid   String @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  todo Todos @relation(fields: [todoId], references: [id])
+  tag  Tag   @relation(fields: [tagId], references: [id])
+
+  @@id([todoId, tagId])
+}
+
+model NoteTag {
+  noteId Int
+  tagId  Int
+  uuid   String @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  note Notes @relation(fields: [noteId], references: [id])
+  tag  Tag   @relation(fields: [tagId], references: [id])
+
+  @@id([noteId, tagId])
+}

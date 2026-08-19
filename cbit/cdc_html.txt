@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      as="image"
+      href="/anasayfa-banner.jpg"
+      fetchpriority="high"
+    />
+    <title>
+      Cevahir Data Center (CDC) | Veri Merkezi Mühendisliği & EPC Çözümleri
+    </title>
+    <meta
+      name="description"
+      content="Cevahir Data Center (CDC Teknoloji); Uptime sertifikalı uzman kadrosuyla Tier-III / Tier-IV veri merkezi tasarımı, inşaat, MEP mühendisliği ve anahtar teslim EPC çözümleri sunar."
+    />
+    <meta
+      name="keywords"
+      content="Cevahir Data Center, CDC, CDC Teknoloji, Cevahir Veri Merkezi, Cevahir Yapı Veri Merkezi, veri merkezi, data center, EPC contractor, Tier III, MEP mühendisliği, hassas iklimlendirme, beyaz alan"
+    />
+    <meta name="author" content="Cevahir Data Center (CDC)" />
+    <meta name="theme-color" content="#eb1c23" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cdcteknoloji.com.tr/" />
+    <meta
+      property="og:title"
+      content="Cevahir Data Center (CDC) | Veri Merkezi Mühendisliği & EPC Çözümleri"
+    />
+    <meta
+      property="og:description"
+      content="Cevahir Data Center (CDC Teknoloji); Uptime sertifikalı uzman kadrosuyla Tier-III / Tier-IV veri merkezi tasarımı, inşaat, MEP mühendisliği ve anahtar teslim EPC çözümleri sunar."
+    />
+    <meta
+      property="og:image"
+      content="https://cdcteknoloji.com.tr/anasayfa-banner.jpg"
+    />
+    <meta property="og:site_name" content="Cevahir Data Center (CDC)" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="CDC | Cevahir Data Center - Veri Merkezi Mühendisliği & EPC Çözümleri"
+    />
+    <meta
+      name="twitter:description"
+      content="CDC Teknoloji; Uptime sertifikalı uzman kadrosuyla Tier-III / Tier-IV veri merkezi tasarımı, inşaat, MEP mühendisliği ve anahtar teslim EPC çözümleri sunar."
+    />
+    <meta
+      name="twitter:image"
+      content="https://cdcteknoloji.com.tr/anasayfa-banner.jpg"
+    />
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://cdcteknoloji.com.tr/" />
+
+    <!-- JSON-LD Schema (Static) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://cdcteknoloji.com.tr/#organization",
+            "name": "Cevahir Data Center",
+            "legalName": "CDC Teknoloji - Cevahir Data Center",
+            "alternateName": ["CDC", "CDC Teknoloji", "Cevahir Veri Merkezi"],
+            "url": "https://cdcteknoloji.com.tr/",
+            "logo": "https://cdcteknoloji.com.tr/image102.jpg",
+            "sameAs": ["https://www.linkedin.com/company/cdc-teknoloji/"],
+            "description": "Cevahir Data Center (CDC Teknoloji); Uptime sertifikalı uzman kadrosuyla Tier-III / Tier-IV veri merkezi tasarımı, inşaat, MEP mühendisliği ve anahtar teslim EPC çözümleri sunar.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "availableLanguage": ["Turkish", "English"]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://cdcteknoloji.com.tr/#website",
+            "url": "https://cdcteknoloji.com.tr/",
+            "name": "Cevahir Data Center",
+            "publisher": {
+              "@id": "https://cdcteknoloji.com.tr/#organization"
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CVJMyn5Q.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CuzbE57g.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

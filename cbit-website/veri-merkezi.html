@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veri Merkezi Çözümleri | CBIT Bilgi ve İletişim Teknolojileri</title>
+<meta name="description" content="Saha etüdünden 7/24 işletmeye: CBIT ve Cevahir Grubu güvencesiyle uçtan uca veri merkezi tasarımı, kurulumu ve işletimi.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-lang="tr">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+
+<symbol id="i-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="13" r="2.6"/><circle cx="5" cy="20" r="2.4"/><circle cx="19" cy="20" r="2.4"/><path d="M7 7.4 10 11.4M17 7.4 14 11.4M10.5 15.2 7 18.4M13.5 15.2 17 18.4"/></symbol>
+
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="6" rx="1.4"/><rect x="3.5" y="14.5" width="17" height="6" rx="1.4"/><circle cx="7" cy="6.5" r=".9" fill="currentColor" stroke="none"/><circle cx="7" cy="17.5" r=".9" fill="currentColor" stroke="none"/><path d="M11 6.5h6M11 17.5h6"/></symbol>
+
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7.5 18h10a4 4 0 0 0 .4-7.98A5.5 5.5 0 0 0 7.2 9.2 4.2 4.2 0 0 0 7.5 18Z"/></symbol>
+
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="1.6"/><rect x="10" y="10" width="4" height="4" rx=".6"/><path d="M9 3.5v3M15 3.5v3M9 17.5v3M15 17.5v3M3.5 9h3M3.5 15h3M17.5 9h3M17.5 15h3"/></symbol>
+
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.6 19 6.4v5.4c0 4.6-2.9 7.6-7 8.6-4.1-1-7-4-7-8.6V6.4Z"/><path d="M9 12.1l2.1 2.1L15.4 10"/></symbol>
+
+<symbol id="i-headset" viewBox="0 0 24 24"><path d="M4.5 13.5v-2a7.5 7.5 0 0 1 15 0v2"/><rect x="3.4" y="13.2" width="4" height="6" rx="1.4"/><rect x="16.6" y="13.2" width="4" height="6" rx="1.4"/><path d="M19.5 19.2v.6a3 3 0 0 1-3 3H13"/></symbol>
+
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5.5" y="4.8" width="13" height="16" rx="1.8"/><rect x="9" y="3" width="6" height="3.4" rx="1"/><path d="M8.3 12.3l2.1 2.1 5-5"/></symbol>
+
+<symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="8" width="8.5" height="12.5" rx="1"/><rect x="13.4" y="3.5" width="6.6" height="17" rx="1"/><path d="M6.6 11.3h1.4M9.6 11.3H11M6.6 14.4h1.4M9.6 14.4H11M6.6 17.4h1.4M9.6 17.4H11M16 6.8h1.4M16 9.8h1.4M16 12.8h1.4M16 15.8h1.4"/></symbol>
+
+<symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11.5 6 8l3.4 1 2.1 2-3.1 3.1a1.5 1.5 0 0 1-2.1 0l-.4-.4"/><path d="M21.5 11.5 18 8l-3.4 1-3.5 3.5 3.4 3.4a1.5 1.5 0 0 0 2.1 0l3.5-3.4"/><path d="M9.4 11.9l2 2a1.4 1.4 0 0 0 2 0M11.6 14.1l1.7 1.7a1.4 1.4 0 0 0 2 0"/></symbol>
+
+<symbol id="i-truck" viewBox="0 0 24 24"><rect x="2.5" y="7" width="11" height="9" rx="1"/><path d="M13.5 10h3.6l3.4 3.2V16h-7Z"/><circle cx="7" cy="18.3" r="1.7"/><circle cx="17" cy="18.3" r="1.7"/></symbol>
+
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></symbol>
+
+<symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.3 12.3l2.1 2.1 5-5"/></symbol>
+
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15.5M14 6l6 6-6 6"/></symbol>
+
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3.6 9 4l1 3.4-2 2c.9 2.3 2.7 4.1 5 5l2-2 3.4 1 .4 3a2 2 0 0 1-2 2C10.5 18.4 5.6 13.5 5 6.4a2 2 0 0 1 1-2.8Z"/></symbol>
+
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.8"/><path d="M4 7l8 6 8-6"/></symbol>
+
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.4 7-11.6A7 7 0 0 0 5 9.4C5 14.6 12 21 12 21Z"/><circle cx="12" cy="9.4" r="2.4"/></symbol>
+
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M5 8.5 12 15.5 19 8.5"/></symbol>
+
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17"/></symbol>
+
+<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.3"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></symbol>
+
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.2 8.8 13 13l-4.2 2.2L11 11Z"/></symbol>
+
+<symbol id="i-gem" viewBox="0 0 24 24"><path d="M4 9.2 7.6 4h8.8L20 9.2 12 20.5Z"/><path d="M4 9.2h16M9 4l-1.6 5.2L12 20.5M15 4l1.6 5.2L12 20.5"/></symbol>
+
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5 20.5 8 12 12.5 3.5 8Z"/><path d="M3.5 12.2 12 16.7l8.5-4.5M3.5 16.2 12 20.7l8.5-4.5"/></symbol>
+
+<symbol id="i-gauge" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 13 15.2 8.6M8 13a4 4 0 0 1 4-4"/><path d="M12 3.5v2M4.5 13h-2M21.5 13h-2"/></symbol>
+
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.3"/><path d="M15.4 15.4 20.5 20.5"/></symbol>
+
+<symbol id="i-ruler" viewBox="0 0 24 24"><rect x="3" y="8.5" width="18" height="7" rx="1.4" transform="rotate(0 12 12)"/><path d="M6.5 8.5v3M10 8.5v3M13.5 8.5v3M17 8.5v2"/></symbol>
+
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 9.3a4 4 0 0 1-5.4 5.4L4 20l-1-1 5.3-5.3a4 4 0 0 1 5.4-5.4l-2.6 2.6 1 1 2.6-2.6Z"/></symbol>
+
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M17.7 6.3l-1.6 1.6M7.9 16.1l-1.6 1.6M17.7 17.7l-1.6-1.6M7.9 7.9 6.3 6.3"/></symbol>
+
+<symbol id="i-lifebuoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="3.6"/><path d="M6.1 6.1 9.5 9.5M14.5 14.5l3.4 3.4M17.9 6.1 14.5 9.5M9.5 14.5l-3.4 3.4"/></symbol>
+
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.8 7 20.5l5-2.4 5 2.4-1.5-6.7"/></symbol>
+
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5Z"/></symbol>
+
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7.5" width="18" height="12" rx="1.8"/><path d="M8.5 7.5V5.8a1.8 1.8 0 0 1 1.8-1.8h3.4a1.8 1.8 0 0 1 1.8 1.8V7.5"/><path d="M3 12.8h18"/></symbol>
+
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3.5 20 7.7v8.6L12 20.5 4 16.3V7.7Z"/><path d="M4 7.7 12 12l8-4.3M12 12v8.5"/></symbol>
+
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.2" r="3.2"/><path d="M3 19c.6-3.4 3-5.2 6-5.2s5.4 1.8 6 5.2"/><circle cx="17" cy="8.6" r="2.4"/><path d="M15.8 13.9c2.2.3 3.7 1.9 4.2 4.6"/></symbol>
+
+<symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.5 7 10 4.5h4L15.5 7"/></symbol>
+
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4"/><path d="M8.5 12.5h7M8.5 15.5h7M8.5 18h4"/></symbol>
+
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V3.8"/><path d="M5.5 4.5 18.5 6l-3.2 4.2L18.5 14 5.5 15.7"/></symbol>
+
+</defs>
+</svg>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/cbit-logo.png" alt="CBIT Bilgi ve İletişim Teknolojileri">
+      <span class="brand-sep"></span>
+      <span class="brand-tag tr">CEVAHİR GRUBU</span><span class="brand-tag en">CEVAHIR GROUP</span>
+    </a>
+    <ul class="main-nav">
+      <li><a href="index.html"><span class="tr">Ana Sayfa</span><span class="en">Home</span></a></li>
+      <li><a href="hakkimizda.html"><span class="tr">Hakkımızda</span><span class="en">About</span></a></li>
+      <li><a href="cozumler.html"><span class="tr">Çözümler</span><span class="en">Solutions</span><svg class="icon"><use href="#i-chevron-down"/></svg></a>
+        <div class="dropdown">
+          <a href="veri-merkezi.html"><svg class="icon"><use href="#i-server"/></svg><span><span class="tr">Ağ Altyapısı ve Veri Merkezi</span><span class="en">Network &amp; Data Center</span></span></a>
+          <a href="cozumler.html#bulut"><svg class="icon"><use href="#i-cloud"/></svg><span><span class="tr">Bulut Çözümleri</span><span class="en">Cloud Solutions</span></span></a>
+          <a href="cozumler.html#yapay-zeka"><svg class="icon"><use href="#i-cpu"/></svg><span><span class="tr">Yapay Zeka Çözümleri</span><span class="en">AI Solutions</span></span></a>
+          <a href="cozumler.html#siber-guvenlik"><svg class="icon"><use href="#i-shield"/></svg><span><span class="tr">Siber Güvenlik</span><span class="en">Cybersecurity</span></span></a>
+          <a href="cozumler.html#yonetilen-hizmetler"><svg class="icon"><use href="#i-headset"/></svg><span><span class="tr">Yönetilen Hizmetler</span><span class="en">Managed Services</span></span></a>
+          <a href="cozumler.html#danismanlik"><svg class="icon"><use href="#i-clipboard"/></svg><span><span class="tr">Danışmanlık ve Proje Yönetimi</span><span class="en">Consulting &amp; PM</span></span></a>
+        </div>
+      </li>
+      <li><a href="veri-merkezi.html" class="active"><span class="tr">Veri Merkezi</span><span class="en">Data Center</span></a></li>
+      <li><a href="is-ortaklari.html"><span class="tr">İş Ortaklarımız</span><span class="en">Partners</span></a></li>
+      <li><a href="iletisim.html"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
+      <li class="mobile-cta-item"><a href="iletisim.html" class="btn btn-primary btn-sm" style="margin-top:8px"><span class="tr">Teklif Alın</span><span class="en">Get a Quote</span></a></li>
+    </ul>
+    <div class="header-actions">
+      <div class="lang-toggle">
+        <button data-lang-btn="tr" class="active">TR</button>
+        <button data-lang-btn="en">EN</button>
+      </div>
+      <a href="iletisim.html" class="btn btn-primary btn-sm">
+        <span class="tr">Teklif Alın</span><span class="en">Get a Quote</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <svg class="icon"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="rack-texture"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow hero-eyebrow"><span class="tr">ÇÖZÜM ALANI 01 · AĞ ALTYAPISI VE VERİ MERKEZİ</span><span class="en">SOLUTION AREA 01 · NETWORK &amp; DATA CENTER</span></span>
+      <h1 class="mt-16"><span class="tr">Sahadan Sunucuya: Veri Merkezi Projelerinde <em>Tek Elden</em> Güvence</span><span class="en">From Ground to Grid: <em>End-to-End</em> Assurance for Your Data Center</span></h1>
+      <p class="hero-lead">
+        <span class="tr">Cevahir Grubu'nun inşaat ve enerji altyapısındaki mühendislik gücünü, CBIT'in bilgi teknolojileri uzmanlığıyla birleştiriyoruz. Saha etüdünden 7/24 işletmeye kadar veri merkezi projenizin tüm katmanlarını tek bir çatı altında yönetiyoruz.</span>
+        <span class="en">We combine Cevahir Group's engineering strength in construction and energy infrastructure with CBIT's information-technology expertise — managing every layer of your data center project under one roof, from site survey to 24/7 operation.</span>
+      </p>
+      <div class="hero-cta">
+        <a href="iletisim.html" class="btn btn-primary"><span class="tr">Projenizi Konuşalım</span><span class="en">Let's Discuss Your Project</span><svg><use href="#i-arrow-right"/></svg></a>
+        <a href="is-ortaklari.html" class="btn btn-outline on-dark"><span class="tr">Tedarikçi / Ortak Olun</span><span class="en">Become a Supplier / Partner</span></a>
+      </div>
+    </div>
+    <div class="photo-slot wide" style="height:340px">
+      <div class="ph-icon"><svg class="icon" style="color:#fff"><use href="#i-server"/></svg></div>
+      <span class="ph-cap tr">FOTOĞRAF ALANI — Veri merkezi salonu, kabinet sıraları veya soğutma/güç altyapısı görseli</span>
+      <span class="ph-cap en">PHOTO SLOT — Data center hall, cabinet rows, or cooling/power infrastructure imagery</span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-stats">
+      <div class="hstat"><b>%99.9999</b><span class="tr">Hedeflenen Ağ Kullanılabilirliği</span><span class="en">Targeted Network Availability</span></div>
+      <div class="hstat"><b>70+</b><span class="tr">M USD Ort. Proje Büyüklüğü</span><span class="en">M USD Avg. Project Size</span></div>
+      <div class="hstat"><b>100+</b><span class="tr">Min. Kabinet Kapasitesi</span><span class="en">Min. Cabinet Capacity</span></div>
+      <div class="hstat"><b>350+</b><span class="tr">M USD Aktif Proje Portföyü</span><span class="en">M USD Active Project Pipeline</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÜŞTERİLER İÇİN — İKİ KATMAN -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="tr">MÜŞTERİLERİMİZ İÇİN</span><span class="en">FOR OUR CUSTOMERS</span></span>
+      <h2><span class="tr">İki Katman, Tek Proje Yönetimi</span><span class="en">Two Layers, One Project Management</span></h2>
+      <p><span class="tr">Rakiplerimizin çoğu yalnızca bilgi teknolojileri katmanında hizmet verir. CBIT, Cevahir Grubu'nun inşaat ve enerji gücü sayesinde yapısal katmanı da aynı çatı altında yönetir.</span><span class="en">Most competitors serve only the IT layer. Thanks to Cevahir Group's construction and energy strength, CBIT manages the structural layer under the very same roof.</span></p>
+    </div>
+    <div class="card-grid cols-2">
+      <div class="solution-card" style="border-color:var(--line)">
+        <div class="icon-badge lg"><svg class="icon icon-lg"><use href="#i-building"/></svg></div>
+        <h3><span class="tr">Yapısal ve Altyapısal Katman</span><span class="en">Structural &amp; Infrastructure Layer</span></h3>
+        <p class="small-caps" style="color:var(--red-600)"><span class="tr">CEVAHİR GRUBU MÜHENDİSLİĞİ</span><span class="en">CEVAHIR GROUP ENGINEERING</span></p>
+        <ul class="mt-16" style="display:flex;flex-direction:column;gap:14px">
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:var(--red-600)"><use href="#i-check"/></svg><span><span class="tr">Saha etüdü ve fizibilite analizi</span><span class="en">Site survey and feasibility analysis</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:var(--red-600)"><use href="#i-check"/></svg><span><span class="tr">Yapı ruhsatı ve inşaat uygulaması</span><span class="en">Building permits and construction execution</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:var(--red-600)"><use href="#i-check"/></svg><span><span class="tr">Mekanik-elektrik altyapı (soğutma, güç dağıtımı, yangın söndürme)</span><span class="en">Mechanical-electrical infrastructure (cooling, power distribution, fire suppression)</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:var(--red-600)"><use href="#i-check"/></svg><span><span class="tr">Enerji altyapısı ve LEED yeşil bina uyumu</span><span class="en">Energy infrastructure and LEED green-building alignment</span></span></li>
+        </ul>
+      </div>
+      <div class="solution-card featured">
+        <div class="icon-badge lg"><svg class="icon icon-lg"><use href="#i-cpu"/></svg></div>
+        <h3><span class="tr">Bilgi Teknolojileri Katmanı</span><span class="en">Information Technology Layer</span></h3>
+        <p class="small-caps" style="color:#FF9AA0"><span class="tr">CBIT UZMANLIĞI</span><span class="en">CBIT EXPERTISE</span></p>
+        <ul class="mt-16" style="display:flex;flex-direction:column;gap:14px">
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:#FF9AA0"><use href="#i-check"/></svg><span><span class="tr">Kampüs ve WAN ağ tasarımı (LAN/WAN, SD-WAN, SASE)</span><span class="en">Campus and WAN network design (LAN/WAN, SD-WAN, SASE)</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:#FF9AA0"><use href="#i-check"/></svg><span><span class="tr">Sunucu, depolama ve sanallaştırma kurulumu</span><span class="en">Server, storage, and virtualization deployment</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:#FF9AA0"><use href="#i-check"/></svg><span><span class="tr">Felaket kurtarma planlama ve iş sürekliliği</span><span class="en">Disaster-recovery planning and business continuity</span></span></li>
+          <li style="display:flex;gap:10px"><svg class="icon" style="color:#FF9AA0"><use href="#i-check"/></svg><span><span class="tr">Uçtan uca gözlemleme ve 7/24 NOC izleme</span><span class="en">End-to-end observability and 24/7 NOC monitoring</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="text-center mt-32" style="font-family:var(--f-display); font-size:19px; color:var(--navy-950)">
+      <span class="tr">Tek proje yönetimi. Tek sözleşme. Tek sorumluluk noktası.</span>
+      <span class="en">One project management. One contract. One point of accountability.</span>
+    </p>
+  </div>
+</section>
+
+<!-- STANDARTLAR -->
+<section class="section bg-navy">
+  <div class="rack-texture"></div>
+  <div class="container two-col">
+    <div>
+      <span class="eyebrow on-dark"><span class="tr">STANDARTLAR VE SERTİFİKASYON</span><span class="en">STANDARDS &amp; CERTIFICATION</span></span>
+      <h2 class="mt-16"><span class="tr">Tier Standartlarına ve Yeşil Bina Kriterlerine Uygun Tasarım</span><span class="en">Design Aligned With Tier Standards and Green-Building Criteria</span></h2>
+      <p class="mt-20"><span class="tr">Veri merkezi tasarımlarımızı, uluslararası kabul gören Tier sınıflandırma standartları ve LEED yeşil bina sertifikasyon kriterleriyle uyumlu şekilde hayata geçiriyoruz. Bu yaklaşım; kesintisizlik, enerji verimliliği ve sürdürülebilirlik hedeflerini aynı anda karşılamamızı sağlıyor.</span><span class="en">We implement our data center designs in line with internationally recognized Tier classification standards and LEED green-building certification criteria — allowing us to meet uptime, energy-efficiency, and sustainability goals at the same time.</span></p>
+      <div class="value-list mt-24">
+        <span class="value-pill" style="background:rgba(255,255,255,.08); color:#fff"><svg class="icon"><use href="#i-award"/></svg>Tier-3 / Tier-4</span>
+        <span class="value-pill" style="background:rgba(255,255,255,.08); color:#fff"><svg class="icon"><use href="#i-gem"/></svg>LEED</span>
+        <span class="value-pill" style="background:rgba(255,255,255,.08); color:#fff"><svg class="icon"><use href="#i-shield"/></svg>ISO 27001</span>
+        <span class="value-pill" style="background:rgba(255,255,255,.08); color:#fff"><svg class="icon"><use href="#i-check-circle"/></svg>KVKK <span class="tr">Uyumu</span><span class="en">Compliance</span></span>
+      </div>
+    </div>
+    <div class="photo-slot">
+      <div class="ph-icon"><svg class="icon" style="color:#fff"><use href="#i-gem"/></svg></div>
+      <span class="ph-cap tr">FOTOĞRAF ALANI — Mekanik/elektrik oda, jeneratör veya soğutma ünitesi görseli</span>
+      <span class="ph-cap en">PHOTO SLOT — Mechanical/electrical room, generator, or cooling unit imagery</span>
+    </div>
+  </div>
+</section>
+
+<!-- SÜREÇ -->
+<section class="section bg-ice">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="tr">ÇALIŞMA MODELİMİZ</span><span class="en">HOW WE WORK</span></span>
+      <h2><span class="tr">Her Proje 5 Net Aşamadan Geçer</span><span class="en">Every Project Follows 5 Clear Stages</span></h2>
+      <p><span class="tr">Şeffaf iletişim ve ölçülebilir çıktılarla, saha etüdünden işletmeye kadar birlikte ilerliyoruz.</span><span class="en">We move forward together with transparent communication and measurable outputs, from site survey to operation.</span></p>
+    </div>
+    <div class="process-steps">
+      <div class="pstep"><div class="icon-badge"><svg class="icon"><use href="#i-search"/></svg></div><span class="pnum">01</span><h4><span class="tr">Analiz</span><span class="en">Analysis</span></h4><p><span class="tr">İhtiyaç ve mevcut altyapı değerlendirmesi</span><span class="en">Needs and existing-infrastructure assessment</span></p></div>
+      <div class="pstep"><div class="icon-badge"><svg class="icon"><use href="#i-ruler"/></svg></div><span class="pnum">02</span><h4><span class="tr">Tasarım</span><span class="en">Design</span></h4><p><span class="tr">Çözüm mimarisi ve yol haritası</span><span class="en">Solution architecture and roadmap</span></p></div>
+      <div class="pstep"><div class="icon-badge"><svg class="icon"><use href="#i-wrench"/></svg></div><span class="pnum">03</span><h4><span class="tr">Kurulum – Test</span><span class="en">Install – Test</span></h4><p><span class="tr">Kurulum ve doğrulama testleri</span><span class="en">Installation and verification testing</span></p></div>
+      <div class="pstep"><div class="icon-badge"><svg class="icon"><use href="#i-settings"/></svg></div><span class="pnum">04</span><h4><span class="tr">İşletim Hizmeti</span><span class="en">Operation</span></h4><p><span class="tr">Sistem işletimi, gözlemleme ve raporlama</span><span class="en">System operation, monitoring, and reporting</span></p></div>
+      <div class="pstep"><div class="icon-badge"><svg class="icon"><use href="#i-lifebuoy"/></svg></div><span class="pnum">05</span><h4><span class="tr">Destek</span><span class="en">Support</span></h4><p><span class="tr">Garanti, bakım ve yedek parça hizmetleri</span><span class="en">Warranty, maintenance, and spare-parts services</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEKTÖRLER -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow navy"><span class="tr">KİMLER İÇİN</span><span class="en">WHO IT'S FOR</span></span>
+      <h2><span class="tr">Kritik Altyapıya İhtiyaç Duyan Her Sektör</span><span class="en">Every Sector That Depends on Critical Infrastructure</span></h2>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-briefcase"/></svg></div><span class="tr">Finans ve Bankacılık</span><span class="en">Finance &amp; Banking</span></div>
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-building"/></svg></div><span class="tr">Kamu Kurumları</span><span class="en">Public Sector</span></div>
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-network"/></svg></div><span class="tr">Telekomünikasyon</span><span class="en">Telecom</span></div>
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-lifebuoy"/></svg></div><span class="tr">Sağlık</span><span class="en">Healthcare</span></div>
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-settings"/></svg></div><span class="tr">Üretim / Sanayi</span><span class="en">Manufacturing</span></div>
+      <div class="sector-tile"><div class="icon-badge" style="background:var(--ice-100);color:var(--navy-brand)"><svg class="icon"><use href="#i-flag"/></svg></div><span class="tr">Eğitim</span><span class="en">Education</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEKNOLOJİ ORTAKLARI -->
+<section class="section bg-ice">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="tr">TEKNOLOJİ ORTAKLARIMIZ</span><span class="en">OUR TECHNOLOGY PARTNERS</span></span>
+      <h2><span class="tr">Üretici Bağımsız, Çok Markalı Ekosistem</span><span class="en">Vendor-Independent, Multi-Brand Ecosystem</span></h2>
+      <p><span class="tr">Global ve yerli donanım, yazılım ve altyapı üreticileriyle kurduğumuz iş ortaklıkları sayesinde her proje için en doğru teknolojiyi seçiyoruz.</span><span class="en">Our partnerships with global and local hardware, software, and infrastructure manufacturers let us choose the right technology for every project.</span></p>
+    </div>
+    <div class="logo-strip">
+      <div class="logo-tile tr">Sunucu &amp; Depolama</div><div class="logo-tile en" style="display:none">Server &amp; Storage</div>
+      <div class="logo-tile tr">Ağ &amp; Güvenlik</div><div class="logo-tile en" style="display:none">Network &amp; Security</div>
+      <div class="logo-tile tr">Güç &amp; Soğutma</div><div class="logo-tile en" style="display:none">Power &amp; Cooling</div>
+      <div class="logo-tile tr">Sanallaştırma</div><div class="logo-tile en" style="display:none">Virtualization</div>
+      <div class="logo-tile tr">Bulut Altyapısı</div><div class="logo-tile en" style="display:none">Cloud Infrastructure</div>
+      <div class="logo-tile tr">İzleme &amp; Yönetim</div><div class="logo-tile en" style="display:none">Monitoring &amp; Management</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEDARİKÇİLER VE İŞ ORTAKLARI İÇİN -->
+<section class="section">
+  <div class="container two-col rev">
+    <div class="photo-slot">
+      <div class="ph-icon"><svg class="icon" style="color:#fff"><use href="#i-truck"/></svg></div>
+      <span class="ph-cap tr">FOTOĞRAF ALANI — Saha ekibi, lojistik veya teslimat görseli</span>
+      <span class="ph-cap en">PHOTO SLOT — Field team, logistics, or delivery imagery</span>
+    </div>
+    <div>
+      <span class="eyebrow navy"><span class="tr">TEDARİKÇİ VE İŞ ORTAKLARI İÇİN</span><span class="en">FOR SUPPLIERS &amp; PARTNERS</span></span>
+      <h2 class="mt-16"><span class="tr">Veri Merkezi Projelerimizde Uzun Soluklu İş Birlikleri Kuruyoruz</span><span class="en">We Build Long-Term Collaborations Across Our Data Center Projects</span></h2>
+      <p class="mt-20" style="color:var(--slate-600)">
+        <span class="tr">350+ M USD'lik aktif veri merkezi proje portföyümüzde; ekipman tedarikçilerinden elektromekanik taşeronlara, yazılım lisans sağlayıcılarından lojistik ortaklarına kadar geniş bir tedarik ekosistemiyle çalışıyoruz. Projelerimize tedarikçi veya çözüm ortağı olarak katılmak isteyen firmaları İş Ortaklarımız sayfamızdan başvurmaya davet ediyoruz.</span>
+        <span class="en">Across our 350+ M USD active data center project pipeline, we work with a broad supply ecosystem — from equipment suppliers to electromechanical subcontractors, and from software licensing providers to logistics partners. We invite companies interested in joining our projects as a supplier or solution partner to apply via our Partners page.</span>
+      </p>
+      <a href="is-ortaklari.html" class="btn btn-primary mt-24"><span class="tr">Tedarikçi Başvurusu Yapın</span><span class="en">Apply as a Supplier</span><svg><use href="#i-arrow-right"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-ice">
+  <div class="container" style="max-width:900px">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="tr">SIKÇA SORULAN SORULAR</span><span class="en">FREQUENTLY ASKED QUESTIONS</span></span>
+      <h2><span class="tr">Veri Merkezi Çözümleri Hakkında</span><span class="en">About Our Data Center Solutions</span></h2>
+    </div>
+    <div>
+      <details class="faq-item" open>
+        <summary><span class="tr">Veri merkezi projesi ne kadar sürer?</span><span class="en">How long does a data center project take?</span><svg class="icon"><use href="#i-close"/></svg></summary>
+        <p class="faq-a"><span class="tr">Süre, projenin kapsamına ve ölçeğine göre değişir. Saha etüdü ve tasarım aşamasından devreye almaya kadar tüm süreci, 5 aşamalı metodolojimizle şeffaf bir şekilde planlıyor ve ilerliyoruz.</span><span class="en">Duration depends on project scope and scale. We plan and progress the entire process transparently — from site survey and design through commissioning — using our 5-stage methodology.</span></p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="tr">Mevcut veri merkezimizi CBIT ile modernize edebilir miyiz?</span><span class="en">Can we modernize our existing data center with CBIT?</span><svg class="icon"><use href="#i-close"/></svg></summary>
+        <p class="faq-a"><span class="tr">Evet. Sıfırdan kurulumun yanı sıra mevcut altyapıların kapasite artırımı, Tier seviyesi yükseltmesi ve enerji verimliliği modernizasyonu projelerinde de yer alıyoruz.</span><span class="en">Yes. Alongside greenfield builds, we also take part in capacity expansion, Tier-level upgrades, and energy-efficiency modernization projects for existing infrastructure.</span></p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="tr">Üretici bağımsız yaklaşım ne anlama geliyor?</span><span class="en">What does "vendor-independent" mean in practice?</span><svg class="icon"><use href="#i-close"/></svg></summary>
+        <p class="faq-a"><span class="tr">Belirli bir donanım veya yazılım markasına bağlı kalmadan, ihtiyacınıza en uygun global veya yerli teknolojiyi objektif kriterlerle değerlendirip öneriyoruz.</span><span class="en">Without being tied to a specific hardware or software brand, we evaluate and recommend the global or local technology best suited to your needs, based on objective criteria.</span></p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="tr">Kurulum sonrası destek nasıl işliyor?</span><span class="en">How does post-installation support work?</span><svg class="icon"><use href="#i-close"/></svg></summary>
+        <p class="faq-a"><span class="tr">7/24 NOC izleme, SLA garantili saha ve uzaktan destek, düzenli bakım ve raporlama hizmetleriyle işletme sürecinizin yanındayız.</span><span class="en">We stay with you throughout operation via 24/7 NOC monitoring, SLA-backed on-site and remote support, and regular maintenance and reporting.</span></p>
+      </details>
+      <details class="faq-item">
+        <summary><span class="tr">Tedarikçi veya çözüm ortağı olarak nasıl başvurabilirim?</span><span class="en">How can I apply as a supplier or solution partner?</span><svg class="icon"><use href="#i-close"/></svg></summary>
+        <p class="faq-a"><span class="tr">İş Ortaklarımız sayfamızdaki başvuru formunu doldurarak veya doğrudan bizimle iletişime geçerek sürece dahil olabilirsiniz.</span><span class="en">You can join the process by filling out the application form on our Partners page or by contacting us directly.</span></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div class="cta-chevron"></div>
+      <div style="position:relative">
+        <h3><span class="tr">Veri Merkezi Projenizi Konuşalım</span><span class="en">Let's Discuss Your Data Center Project</span></h3>
+        <p><span class="tr">Saha etüdünden 7/24 işletmeye kadar, ihtiyacınızı birlikte değerlendirelim.</span><span class="en">From site survey to 24/7 operation — let's assess your needs together.</span></p>
+      </div>
+      <div class="cta-actions" style="position:relative">
+        <a href="iletisim.html" class="btn btn-primary"><span class="tr">Teklif Alın</span><span class="en">Request a Quote</span></a>
+        <a href="is-ortaklari.html" class="btn btn-outline on-dark"><span class="tr">İş Ortağımız Olun</span><span class="en">Become a Partner</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/cbit-logo.png" alt="CBIT">
+        <p class="tr">Cevahir Grubu'nun teknoloji kanadı olarak; ağ altyapısından veri merkezine, buluttan yapay zekaya kadar üretici bağımsız, uçtan uca bilgi teknolojileri çözümleri sunuyoruz.</p>
+        <p class="en">As the technology arm of Cevahir Group, we deliver vendor-independent, end-to-end IT solutions — from network infrastructure and data centers to cloud and artificial intelligence.</p>
+        <div class="social-row mt-24">
+          <a href="#" aria-label="LinkedIn"><svg class="icon icon-sm"><use href="#i-briefcase"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="icon icon-sm"><use href="#i-camera"/></svg></a>
+          <a href="#" aria-label="Web"><svg class="icon icon-sm"><use href="#i-globe"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 class="tr">Kurumsal</h5><h5 class="en" style="display:none">Company</h5>
+        <ul>
+          <li><a href="hakkimizda.html"><span class="tr">Hakkımızda</span><span class="en">About Us</span></a></li>
+          <li><a href="hakkimizda.html#vizyon"><span class="tr">Vizyon &amp; Misyon</span><span class="en">Vision &amp; Mission</span></a></li>
+          <li><a href="is-ortaklari.html"><span class="tr">İş Ortaklarımız</span><span class="en">Partners</span></a></li>
+          <li><a href="iletisim.html"><span class="tr">İletişim</span><span class="en">Contact</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 class="tr">Çözümler</h5><h5 class="en" style="display:none">Solutions</h5>
+        <ul>
+          <li><a href="veri-merkezi.html"><span class="tr">Ağ Altyapısı ve Veri Merkezi</span><span class="en">Network &amp; Data Center</span></a></li>
+          <li><a href="cozumler.html#bulut"><span class="tr">Bulut Çözümleri</span><span class="en">Cloud Solutions</span></a></li>
+          <li><a href="cozumler.html#yapay-zeka"><span class="tr">Yapay Zeka Çözümleri</span><span class="en">AI Solutions</span></a></li>
+          <li><a href="cozumler.html#siber-guvenlik"><span class="tr">Siber Güvenlik</span><span class="en">Cybersecurity</span></a></li>
+          <li><a href="cozumler.html#yonetilen-hizmetler"><span class="tr">Yönetilen Hizmetler</span><span class="en">Managed Services</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 class="tr">İletişim</h5><h5 class="en" style="display:none">Contact</h5>
+        <ul class="footer-contact">
+          <li><svg class="icon"><use href="#i-pin"/></svg><span class="tr">İstanbul, Türkiye</span><span class="en">Istanbul, Türkiye</span></li>
+          <li><svg class="icon"><use href="#i-phone"/></svg><span>+90 (2XX) XXX XX XX</span></li>
+          <li><svg class="icon"><use href="#i-mail"/></svg><span>info@cbit.com.tr</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <small><span class="tr">© 2026 CBIT Bilgi ve İletişim Teknolojileri A.Ş. — Cevahir Grubu iştirakidir. Tüm hakları saklıdır.</span><span class="en">© 2026 CBIT Information &amp; Communication Technologies Inc. — A Cevahir Group company. All rights reserved.</span></small>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
