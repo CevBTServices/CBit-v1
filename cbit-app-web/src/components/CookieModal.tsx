@@ -40,8 +40,9 @@ export default function CookieModal() {
               <label className="switch">
                 <input 
                   type="checkbox" 
-                  checked={localPrefs.kisiselVeriler}
-                  onChange={() => handleToggle("kisiselVeriler")}
+                  checked={true}
+                  disabled={true}
+                  onChange={() => {}}
                 />
                 <span className="slider round"></span>
               </label>

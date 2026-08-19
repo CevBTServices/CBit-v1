@@ -71,7 +71,7 @@ export function CookieProvider({ children }: { children: ReactNode }) {
   };
 
   const rejectAll = () => {
-    persist({ kisiselVeriler: false, cerezPolitikasi: false });
+    persist({ kisiselVeriler: true, cerezPolitikasi: false });
     clearAllCookies();
   };
 

@@ -298,7 +298,7 @@ export default function Layout() {
               <li><NavLink to="/hakkimizda">{t.nav.hakkimizda}</NavLink></li>
               <li><NavLink to="/neden-biz">{t.nav.cozumler}</NavLink></li>
               {ayarlar.kariyerAktif && (
-                <li><NavLink to="/kariyer">Kariyer</NavLink></li>
+                <li><a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer">Kariyer</a></li>
               )}
               {ayarlar.haberlerAktif && (
                 <li><NavLink to="/haberler">{t.nav.haberler}</NavLink></li>
