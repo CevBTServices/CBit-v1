@@ -287,8 +287,11 @@ export default function Layout() {
               <img src="/cbit-logo.png" alt="CBIT Logo" />
             </div>
             <a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer" className="linkedin-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M5.3 7.8C6.9 7.8 7.8 6.7 7.8 5.4C7.7 4 6.9 3 5.3 3C3.8 3 2.8 4 2.8 5.4C2.8 6.7 3.8 7.8 5.2 7.8H5.3ZM3 21H7.6V9.4H3V21ZM16 9.1C13.6 9.1 12.5 10.5 12 11.4V9.4H7.5C7.5 10.7 7.5 21 7.5 21H12V14.5C12 14.2 12.1 13.8 12.2 13.5C12.5 12.8 13.2 12.1 14.1 12.1C15.5 12.1 16 13.2 16 14.9V21H20.6V14.4C20.6 10.9 18.7 9.1 16 9.1Z" />
+              </svg>
               {(t as any).footer.takipEdin}
+              <div className="linkedin-dot"></div>
             </a>
           </div>
 
