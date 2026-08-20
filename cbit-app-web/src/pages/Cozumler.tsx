@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../context/useLanguage";
 import { Link, useLocation } from "react-router-dom";
 import SEO from "../components/SEO";
@@ -21,6 +21,16 @@ import {
 export default function Cozumler() {
   const { t } = useLanguage();
   const location = useLocation();
+  const [isShrunk, setIsShrunk] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 250px kaydırıldıktan sonra butonları küçült (navbar gibi)
+      setIsShrunk(window.scrollY > 250);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (location.hash) {
@@ -96,7 +106,7 @@ export default function Cozumler() {
       </section>
 
       {/* Chip Nav Row */}
-      <section className="cozumler-chip-section">
+      <section className={`cozumler-chip-section ${isShrunk ? "is-shrunk" : ""}`}>
         <div className="cozumler-chip-row">
           {t.cozumler.chips.map((chip: { id: string; label: string }, idx: number) => (
             <button

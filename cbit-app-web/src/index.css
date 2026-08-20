@@ -4116,9 +4116,38 @@ input:disabled + .slider {
   max-width: 800px;
 }
 
-/* Chip Navigation */
 .cozumler-chip-section {
+  position: sticky;
+  top: 60px; /* Offset to sit right below the shrunk navbar */
+  z-index: 998; /* Below navbar's 9999 */
+  padding: 15px 0;
   margin-bottom: 48px;
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cozumler-chip-section.is-shrunk {
+  background: #111111; /* Or a suitable dark color */
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Expand the background to cover the full width by using negative margins on the section, or assume the container handles it. */
+  margin-left: -60px;
+  margin-right: -60px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+@media (max-width: 768px) {
+  .cozumler-chip-section {
+    top: 55px;
+  }
+  .cozumler-chip-section.is-shrunk {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .cozumler-chip-row {
@@ -4128,7 +4157,23 @@ input:disabled + .slider {
   gap: 12px;
 }
 
+@media (max-width: 768px) {
+  .cozumler-chip-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px; /* Leave some space for scrollbar if any */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .cozumler-chip-row::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
 .cozumler-chip-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
   background: #2c2c2c;
   border: 1px solid #3c3c3c;
   color: #cbd5e1;
@@ -4174,6 +4219,14 @@ input:disabled + .slider {
 .cozumler-solution-block:hover {
   border-color: rgba(172, 0, 0, 0.3);
   box-shadow: 0 12px 36px rgba(172, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .cozumler-solution-block {
+    grid-template-columns: 1fr; /* Stack columns on tablet/mobile */
+    padding: 24px;
+    gap: 24px;
+  }
 }
 
 /* Block Sidebar */
@@ -4492,17 +4545,7 @@ input:disabled + .slider {
   }
 }
 
-.cozumler-solution-block {
-  background-color: #1A1A1A;
-  border-radius: 12px;
-  padding: 40px;
-  margin-bottom: 40px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #333;
-  position: relative;
-  overflow: hidden;
-  scroll-margin-top: 100px;
-}
+
 
 .neden-fark-card {
   background: #2c2c2c;
@@ -4689,6 +4732,16 @@ input:focus, textarea:focus, select:focus {
   font-weight: 800;
   text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
+
+@media (max-width: 768px) {
+  .about-hero-years-overlay {
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 24px;
+    bottom: 140px;
+    gap: 12px;
+  }
+}
+
 
 /* ============================================================
    GLOBAL TEXT ALIGNMENT (JUSTIFY) 

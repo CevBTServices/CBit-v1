@@ -484,7 +484,7 @@ export const en: Translations = {
       adres: "Address",
       telefon: "Phone",
       eposta: "Email",
-      linkedin: "LinkedIn",
+      linkedin: "Social Media",
     },
   },
   yasal: {

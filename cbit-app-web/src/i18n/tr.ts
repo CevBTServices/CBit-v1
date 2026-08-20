@@ -481,7 +481,7 @@ export const tr = {
       adres: "Adres",
       telefon: "Telefon",
       eposta: "E-posta",
-      linkedin: "LinkedIn",
+      linkedin: "Sosyal Medya",
     },
   },
   yasal: {

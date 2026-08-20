@@ -91,7 +91,7 @@ export default function Iletisim() {
               </li>
               <li>
                 <strong>{t.iletisim.sirketDetayi.linkedin}: </strong>
-                <a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer">Bizim Hesap</a>
+                <a href="https://www.linkedin.com/company/cbit-technology/home/" target="_blank" rel="noopener noreferrer">CBIT Teknoloji LinkedIn</a>
               </li>
             </ul>
 

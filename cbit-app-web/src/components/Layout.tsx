@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { Globe, ChevronDown } from "lucide-react";
 import { useLanguage } from "../context/useLanguage";
 import { useSiteAyarlari } from "../context/SiteAyarlariContext";
@@ -7,7 +7,7 @@ import { useCookies } from "../context/CookieContext";
 import CookieBanner from "./CookieBanner";
 import CookieModal from "./CookieModal";
 export default function Layout() {
-  const navigate = useNavigate();
+  // navigate removed
   const { lang, t, setLang } = useLanguage();
   const { ayarlar } = useSiteAyarlari();
   const { setModalOpen } = useCookies();
@@ -79,6 +79,18 @@ export default function Layout() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const handleNavClick = (path: string) => {
+    if (window.location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleMobileNavClick = (path: string) => {
+    if (window.location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setMenuAcik(false);
+  };
 
   return (
     <div className="site-wrapper">
@@ -88,7 +100,9 @@ export default function Layout() {
         <header className="navbar">
           <div
             className="logo"
-            onClick={() => navigate("/")}
+            onClick={() => {
+              window.location.href = "/";
+            }}
             style={{ cursor: "pointer" }}
           >
             <img src="/cbit-logo.png" alt="CBIT Logo" />
@@ -99,16 +113,19 @@ export default function Layout() {
             <NavLink
               to="/hakkimizda"
               className={({ isActive }) => (isActive ? "active-link" : "")}
+              onClick={() => handleNavClick("/hakkimizda")}
             >
               {t.nav.hakkimizda}
             </NavLink>
             <NavLink
               to="/neden-biz"
               className={({ isActive }) => (isActive ? "active-link" : "")}
+              onClick={() => handleNavClick("/neden-biz")}
             > {renderWithSpacedCBIT(t.nav.cozumler)} </NavLink>
             <NavLink
               to="/cozumler"
               className={({ isActive }) => (isActive ? "active-link" : "")}
+              onClick={() => handleNavClick("/cozumler")}
             >
               {t.nav.yetkinlikler}
             </NavLink>
@@ -116,6 +133,7 @@ export default function Layout() {
               <NavLink
                 to="/is-ortaklari"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={() => handleNavClick("/is-ortaklari")}
               >
                 {(t as any).nav.isOrtaklari}
               </NavLink>
@@ -124,6 +142,7 @@ export default function Layout() {
               <NavLink
                 to="/projeler"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={() => handleNavClick("/projeler")}
               >
                 {t.nav.projeler}
               </NavLink>
@@ -133,6 +152,7 @@ export default function Layout() {
               <NavLink
                 to="/haberler"
                 className={({ isActive }) => (isActive ? "active-link" : "")}
+                onClick={() => handleNavClick("/haberler")}
               >
                 {t.nav.haberler}
               </NavLink>
@@ -140,6 +160,7 @@ export default function Layout() {
             <NavLink
               to="/iletisim"
               className={({ isActive }) => (isActive ? "active-link" : "")}
+              onClick={() => handleNavClick("/iletisim")}
             >
               {t.nav.iletisim}
             </NavLink>
@@ -200,19 +221,19 @@ export default function Layout() {
           <NavLink
             to="/hakkimizda"
             className={({ isActive }) => (isActive ? "active-link" : "")}
-            onClick={() => setMenuAcik(false)}
+            onClick={() => handleMobileNavClick("/hakkimizda")}
           >
             {t.nav.hakkimizda}
           </NavLink>
           <NavLink
             to="/neden-biz"
             className={({ isActive }) => (isActive ? "active-link" : "")}
-            onClick={() => setMenuAcik(false)}
+            onClick={() => handleMobileNavClick("/neden-biz")}
           > {renderWithSpacedCBIT(t.nav.cozumler)} </NavLink>
           <NavLink
             to="/cozumler"
             className={({ isActive }) => (isActive ? "active-link" : "")}
-            onClick={() => setMenuAcik(false)}
+            onClick={() => handleMobileNavClick("/cozumler")}
           >
             {t.nav.yetkinlikler}
           </NavLink>
@@ -220,7 +241,7 @@ export default function Layout() {
             <NavLink
               to="/is-ortaklari"
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              onClick={() => setMenuAcik(false)}
+              onClick={() => handleMobileNavClick("/is-ortaklari")}
             >
               {(t as any).nav.isOrtaklari}
             </NavLink>
@@ -229,7 +250,7 @@ export default function Layout() {
             <NavLink
               to="/projeler"
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              onClick={() => setMenuAcik(false)}
+              onClick={() => handleMobileNavClick("/projeler")}
             >
               {t.nav.projeler}
             </NavLink>
@@ -239,7 +260,7 @@ export default function Layout() {
             <NavLink
               to="/haberler"
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              onClick={() => setMenuAcik(false)}
+              onClick={() => handleMobileNavClick("/haberler")}
             >
               {t.nav.haberler}
             </NavLink>
@@ -247,7 +268,7 @@ export default function Layout() {
           <NavLink
             to="/iletisim"
             className={({ isActive }) => (isActive ? "active-link" : "")}
-            onClick={() => setMenuAcik(false)}
+            onClick={() => handleMobileNavClick("/iletisim")}
           >
             {t.nav.iletisim}
           </NavLink>
