@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   ArrowRight,
   ClipboardCheck,
@@ -28,6 +29,7 @@ export default function Anasayfa() {
 
   return (
     <div className="home-page">
+      <SEO />
 
       {/* 1. HERO SECTION */}
       <section className="main-hero">

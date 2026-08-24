@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLanguage } from "../context/useLanguage";
 import { Link, useLocation } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   Server,
   Cloud,
@@ -84,6 +85,7 @@ export default function Cozumler() {
 
   return (
     <div className="page-container cozumler-page">
+      <SEO title="Çözümlerimiz" />
 
 
       {/* Intro Text Section Below Image */}

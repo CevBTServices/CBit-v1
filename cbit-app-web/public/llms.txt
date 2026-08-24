@@ -1,0 +1,13 @@
+# Cevahir Bilgi ve İletişim Teknolojileri (CBIT)
+
+> CBIT (Cevahir Bilişim), kurumsal düzeyde bilgi ve iletişim teknolojileri (ICT) alanında kapsamlı çözümler sunan yenilikçi bir teknoloji şirketidir. 
+
+Cevahir Teknoloji bünyesinde faaliyet gösteren CBIT; sistem entegrasyonu, IT altyapı çözümleri, veri merkezi (Data Center) hizmetleri ve dijital dönüşüm süreçlerinde uzmanlaşmıştır. Odak alanlarımız arasında kurumsal donanım tedariki, sunucu ve depolama sistemleri, ağ ve iletişim altyapısı, siber güvenlik çözümleri, bilgi güvenliği, firewall yönetimi ve bulut bilişim hizmetleri yer almaktadır. Ayrıca müşterilerimize yönetilen IT hizmetleri, IT danışmanlık hizmetleri ile 7/24 teknik destek ve bakım sunarak iş sürekliliklerini garanti altına alıyoruz.
+
+## Sayfalar
+
+- [Ana Sayfa](https://cbit.com.tr/): CBIT ana sayfası ve genel teknoloji çözümlerimiz.
+- [Hakkımızda](https://cbit.com.tr/hakkimizda): CBIT'in vizyonu, misyonu ve bilişim teknolojileri sektöründeki kurumsal yolculuğu.
+- [Neden CBIT](https://cbit.com.tr/neden-cbit): Siber güvenlik, bulut bilişim ve sistem entegrasyonunda neden bizi tercih etmelisiniz? Avantajlarımız.
+- [Çözümler](https://cbit.com.tr/cozumler): Veri merkezi, ağ güvenliği, IT altyapı ve kurumsal donanım çözümlerimizin detayları.
+- [İletişim](https://cbit.com.tr/iletisim): CBIT teknoloji uzmanlarına ulaşabileceğiniz iletişim bilgileri ve destek formu.

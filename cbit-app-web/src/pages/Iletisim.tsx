@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLanguage } from "../context/useLanguage";
 import { api } from "../api/client";
 import { Alert } from "../components/Alert"; // Zarif Alert bileşenini ekliyoruz
+import SEO from "../components/SEO";
 
 export default function Iletisim() {
   const { t } = useLanguage();
@@ -55,6 +56,7 @@ export default function Iletisim() {
 
   return (
     <div style={{ backgroundColor: "#262626", minHeight: "100vh", width: "100%" }}>
+      <SEO title="İletişim" />
       <div className="page-container iletisim-page">
       <h1 className="page-title">{t.iletisim.baslik}</h1>
       <p className="page-subtitle">{t.iletisim.altBaslik}</p>

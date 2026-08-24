@@ -1,11 +1,13 @@
 import { Compass, Target } from "lucide-react";
 import { useLanguage } from "../context/useLanguage";
+import SEO from "../components/SEO";
 
 export default function Hakkimizda() {
   const { t } = useLanguage();
 
   return (
     <div className="about-page">
+      <SEO title="Hakkımızda" />
       {/* 1. HERO SECTION */}
       <section className="about-hero" style={{ paddingBottom: "0px", paddingTop: "60px" }}>
         <div className="about-hero-overlay" style={{ background: "none" }}>

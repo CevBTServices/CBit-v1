@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/useLanguage';
+import SEO from '../components/SEO';
 
 export default function NedenCbit() {
   const { t } = useLanguage();
@@ -15,6 +16,7 @@ export default function NedenCbit() {
 
   return (
     <div className="page-container neden-cbit-page">
+      <SEO title="Neden CBIT" />
       {/* 1. Hero Bölümü */}
       <section className="neden-hero-section">
         <div className="neden-hero-inner">
