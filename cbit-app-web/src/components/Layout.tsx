@@ -354,9 +354,7 @@ export default function Layout() {
             <p>© {new Date().getFullYear()} CBIT Technology. All rights reserved.</p>
           </div>
           <div className="footer-bottom-right">
-            <span className="yasal-title">{(t as any).footer.yasalBilgiler} | </span>
-            <NavLink to="/kisisel-verilerin-korunmasi">{(t as any).footer.aydinlatmaMetni}</NavLink> | 
-            <NavLink to="/cerez-politikasi">{(t as any).footer.cerezPolitikasi}</NavLink> | 
+            <NavLink to="/yasal-bilgiler">{(t as any).footer.yasalBilgiler}</NavLink> | 
             <button className="btn-cookie-trigger" onClick={() => setModalOpen(true)}>
               {(t as any).footer.cerezAyarlari}
             </button>

@@ -1,4 +1,4 @@
-import type { Haber, Proje, IsOrtagi } from "../types";
+import type { Haber, Proje, IsOrtagi, YasalMetin } from "../types";
 
 // Eğer VITE_API_URL tanımlıysa onu kullan, yoksa yerel localhost'a düş.
 // Değer sadece "/api" ise, fetch fonksiyonu bunu otomatik olarak mevcut domainin arkasına ekler.
@@ -79,5 +79,9 @@ export const api = {
       if (!res.ok) throw new Error("İstek başarısız");
       return res.json();
     },
+  },
+  yasalMetinler: {
+    list: () => request<YasalMetin[]>("/v1/yasal-metinler/our-documents"),
+    get: (id: string) => request<YasalMetin>(`/v1/yasal-metinler/find/${id}`),
   },
 };

@@ -7,13 +7,14 @@ import morgan from 'morgan';
 import { logger } from '../libs';
 import path from 'path';
 import { API_ROUTES, API_VERSION, HTTP_STATUS_CODE } from '../helpers';
-import { haberRoute, authRoute, projeRoute, messageRoute, uploadRoute, ayarlarRoute, isOrtaklariRoute } from '../routes';
+import { haberRoute, authRoute, projeRoute, messageRoute, uploadRoute, ayarlarRoute, isOrtaklariRoute, yasalMetinRoute } from '../routes';
 import { Prisma } from '../generated/prisma';
 import { csrfProtection } from '../middlewares/csrf.middleware';
 import { sanitizeBody } from '../middlewares/sanitize.middleware';
 import { authMiddleware } from '../middlewares/auth.middleware';
 import { contentTypeMiddleware } from '../middlewares/contentType.middleware';
 import { securityHeadersMiddleware } from '../middlewares/headers.middleware';
+import { apiLimiter, authLimiter, messageLimiter, uploadLimiter } from '../middlewares/rateLimiter.middleware';
 
 const { PORT = '2000', NODE_ENV, CORS_ORIGIN } = process.env;
 
@@ -74,13 +75,14 @@ const server = () => {
   // Serve uploaded files statically
   app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
 
-  app.use(`${API_VERSION.V1}${API_ROUTES.HABER}`, haberRoute);
-  app.use(`${API_VERSION.V1}${API_ROUTES.AUTH}`, authRoute);
-  app.use(`${API_VERSION.V1}${API_ROUTES.MESSAGE}`, messageRoute);
-  app.use(`${API_VERSION.V1}/uploads`, uploadRoute);
-  app.use(`${API_VERSION.V1}${API_ROUTES.PROJE}`, projeRoute);
-  app.use(`${API_VERSION.V1}${API_ROUTES.AYARLAR}`, ayarlarRoute);
-  app.use(`${API_VERSION.V1}${API_ROUTES.ISORTAKLARI}`, isOrtaklariRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.HABER}`, apiLimiter, haberRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.AUTH}`, authLimiter, authRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.MESSAGE}`, apiLimiter, messageRoute);
+  app.use(`${API_VERSION.V1}/uploads`, uploadLimiter, uploadRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.PROJE}`, apiLimiter, projeRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.AYARLAR}`, apiLimiter, ayarlarRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.ISORTAKLARI}`, apiLimiter, isOrtaklariRoute);
+  app.use(`${API_VERSION.V1}${API_ROUTES.YASALMETINLER}`, apiLimiter, yasalMetinRoute);
 
   /*
   ! Eğer ki bir URL backend'de yoksa otomatik olarak 404 Not Found hatası yaratıp onu yönetim sistemine iletir.

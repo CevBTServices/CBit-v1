@@ -1,41 +1,37 @@
-import { Request, Response, NextFunction } from 'express';
+import rateLimit from 'express-rate-limit';
 
-// IP istek kayıtlarını ve zaman damgalarını tutan harita
-const ipRequestMap = new Map<string, number[]>();
+// Genel/Standart API limiti (Örn: /news, /projects, /yasal-metinler vs.)
+export const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 dakika
+  max: 100, // Her IP için 15 dakikada en fazla 100 istek
+  message: { message: 'Çok fazla istek gönderdiniz. Lütfen daha sonra tekrar deneyin.' },
+  standardHeaders: true, 
+  legacyHeaders: false,
+});
 
-// Hafıza sızıntılarını (Memory Leak) önlemek için her 5 dakikada bir eski kayıtları süpüren otomatik mekanizma
-setInterval(() => {
-  const now = Date.now();
-  const windowMs = 60000;
-  for (const [ip, requests] of ipRequestMap.entries()) {
-    const validRequests = requests.filter((time) => now - time < windowMs);
-    if (validRequests.length === 0) {
-      ipRequestMap.delete(ip); // Süresi dolmuş IP'leri haritadan silerek RAM yükünü sıfırlıyoruz
-    } else {
-      ipRequestMap.set(ip, validRequests);
-    }
-  }
-}, 300000); // 5 dakikada bir (300.000 ms) çalışır
+// Auth limiti (Brute-force koruması)
+export const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 dakika
+  max: 10, // Her IP için 15 dakikada en fazla 10 giriş denemesi
+  message: { message: 'Çok fazla giriş denemesi yaptınız. Lütfen 15 dakika sonra tekrar deneyin.' },
+  standardHeaders: true, 
+  legacyHeaders: false,
+});
 
-export const contactRateLimiter = (req: Request, res: Response, next: NextFunction): any => {
-  const ip = (req.headers['x-forwarded-for'] as string) || req.ip || 'anonymous';
-  const now = Date.now();
-  const windowMs = 60000; // 1 dakika penceresi
-  const maxRequests = 3; // İzin verilen maksimum istek adeti
+// Mesaj/İletişim limiti (Spam koruması)
+export const messageLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 saat
+  max: 5, // Her IP için 1 saatte en fazla 5 mesaj
+  message: { message: 'Çok fazla mesaj gönderdiniz. Lütfen daha sonra tekrar deneyin.' },
+  standardHeaders: true, 
+  legacyHeaders: false,
+});
 
-  let requests = ipRequestMap.get(ip) || [];
-  
-  // Süresi dolmuş (1 dakikadan eski) istek zaman damgalarını filtrele
-  requests = requests.filter((time) => now - time < windowMs);
-
-  if (requests.length >= maxRequests) {
-    return res.status(429).json({
-      message: 'Çok fazla istek gönderdiniz. Lütfen bir dakika sonra tekrar deneyin.',
-    });
-  }
-
-  // İstek zaman damgasını ekliyoruz
-  requests.push(now);
-  ipRequestMap.set(ip, requests);
-  next();
-};
+// Upload limiti
+export const uploadLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 dakika
+  max: 20, // Her IP için 15 dakikada en fazla 20 dosya yükleme
+  message: { message: 'Çok fazla dosya yüklediniz. Lütfen daha sonra tekrar deneyin.' },
+  standardHeaders: true, 
+  legacyHeaders: false,
+});

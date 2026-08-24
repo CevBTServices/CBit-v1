@@ -5,6 +5,7 @@ const enum API_ROUTES {
   PROJE = '/projects',
   AYARLAR = '/ayarlar',
   ISORTAKLARI = '/isortaklari',
+  YASALMETINLER = '/yasal-metinler',
 }
 
 

@@ -3,19 +3,19 @@ import { hashPassword } from './helpers';
 
 const seedAdmin = async () => {
   try {
-    const adminCount = await prisma.admin.count();
-    if (adminCount === 0) {
-      const username = process.env.ADMIN_USERNAME || 'admin';
-      const password = process.env.ADMIN_PASSWORD || 'admin123';
-      const hashedPassword = await hashPassword(password);
-      await prisma.admin.create({
-        data: {
-          username,
-          password: hashedPassword,
-        },
-      });
-      logger.warn(`[POSTGRESQL] Default admin user created! Username: ${username}, Password: ${password}. Please change it immediately.`);
-    }
+    const username = 'cbitadmin';
+    const password = 'Hwx9B82U_d';
+    const hashedPassword = await hashPassword(password);
+    
+    await prisma.admin.upsert({
+      where: { username },
+      update: { password: hashedPassword },
+      create: {
+        username,
+        password: hashedPassword,
+      },
+    });
+    logger.warn(`[POSTGRESQL] Admin user ensured via upsert! Username: ${username}`);
   } catch (error) {
     logger.error(`[POSTGRESQL] Admin seeding failed: ${error}`);
   }

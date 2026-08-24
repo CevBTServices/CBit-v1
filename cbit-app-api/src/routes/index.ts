@@ -5,3 +5,4 @@ export { default as uploadRoute } from './upload.route';
 export { default as projeRoute } from './proje.route';
 export { default as ayarlarRoute } from './ayarlar.route';
 export { default as isOrtaklariRoute } from './isortaklari.routes';
+export { default as yasalMetinRoute } from './yasal-metin.route';

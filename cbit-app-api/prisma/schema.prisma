@@ -83,3 +83,14 @@ model IsOrtagi {
   @@index([sira(sort: Asc), createdAt(sort: Desc)])
 }
 
+model YasalMetin {
+  id         String   @id @default(uuid()) @db.Uuid
+  baslik     String
+  baslikEn   String?
+  aciklama   String
+  aciklamaEn String?
+  dosyaYolu  String
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt(sort: Desc)])
+}

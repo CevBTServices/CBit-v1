@@ -43,6 +43,16 @@ export interface Message {
   createdAt: string;
 }
 
+export interface YasalMetin {
+  id: string;
+  baslik: string;
+  baslikEn?: string | null;
+  aciklama: string;
+  aciklamaEn?: string | null;
+  dosyaYolu: string;
+  createdAt: string;
+}
+
 export interface IsOrtagi {
   id: string;
   adi: string;
@@ -51,4 +61,3 @@ export interface IsOrtagi {
   sira: number;
   createdAt: string;
 }
-

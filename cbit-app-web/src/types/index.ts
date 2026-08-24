@@ -50,3 +50,12 @@ export interface IsOrtagi {
   createdAt: string;
 }
 
+export interface YasalMetin {
+  id: string;
+  baslik: string;
+  baslikEn?: string | null;
+  aciklama: string;
+  aciklamaEn?: string | null;
+  dosyaYolu: string;
+  createdAt: string;
+}

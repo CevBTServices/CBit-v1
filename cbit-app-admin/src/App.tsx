@@ -16,6 +16,7 @@ import IsOrtaklari from "./pages/IsOrtaklari";
 import Messages from "./pages/Messages";
 import Login from "./pages/Login";
 import Ayarlar from "./pages/Ayarlar";
+import YasalMetinler from "./pages/YasalMetinler";
 import {
   LayoutDashboard,
   Building2,
@@ -26,6 +27,7 @@ import {
   KeyRound,
   Settings,
   Users,
+  FileText,
 } from "lucide-react";
 import ChangePassword from "./pages/ChangePassword";
 
@@ -104,6 +106,15 @@ function AdminLayout() {
             <span>Mesaj Kutusu</span>
           </NavLink>
           <NavLink
+            to="/yasal-metinler"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
+            <FileText size={19} strokeWidth={2} />
+            <span>Yasal Metinler</span>
+          </NavLink>
+          <NavLink
             to="/ayarlar"
             className={({ isActive }) =>
               `sidebar-link ${isActive ? "active" : ""}`
@@ -147,6 +158,7 @@ function AdminLayout() {
           <Route path="/news" element={<News />} />
           <Route path="/is-ortaklari" element={<IsOrtaklari />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/yasal-metinler" element={<YasalMetinler />} />
           <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/ayarlar" element={<Ayarlar />} />
         </Routes>

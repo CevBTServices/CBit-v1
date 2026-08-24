@@ -1,4 +1,4 @@
-import type { SiteAyarlari, Proje, Haber, Message, IsOrtagi } from "../types";
+import type { SiteAyarlari, Proje, Haber, Message, IsOrtagi, YasalMetin } from "../types";
 
 const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:4101";
 
@@ -111,6 +111,22 @@ export const api = {
       }),
     delete: (id: string) =>
       request<void>(`/v1/isortaklari/${id}`, { method: "DELETE" }),
+  },
+  yasalMetinler: {
+    list: () => request<YasalMetin[]>("/v1/yasal-metinler/our-documents"),
+    get: (id: string) => request<YasalMetin>(`/v1/yasal-metinler/find/${id}`),
+    create: (data: Partial<YasalMetin>) =>
+      request<void>("/v1/yasal-metinler/create", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update: (id: string, data: Partial<YasalMetin>) =>
+      request<void>(`/v1/yasal-metinler/update/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }),
+    delete: (id: string) =>
+      request<void>(`/v1/yasal-metinler/delete/${id}`, { method: "DELETE" }),
   },
   uploads: {
     upload: (file: File) => {

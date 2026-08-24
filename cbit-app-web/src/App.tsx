@@ -13,8 +13,7 @@ const IsOrtaklari = lazy(() => import("./pages/IsOrtaklari"));
 const Projeler = lazy(() => import("./pages/Projeler"));
 const Haberler = lazy(() => import("./pages/Haberler"));
 const Iletisim = lazy(() => import("./pages/Iletisim"));
-const CerezPolitikasi = lazy(() => import("./pages/CerezPolitikasi"));
-const KisiselVerilerinKorunmasi = lazy(() => import("./pages/KisiselVerilerinKorunmasi"));
+const YasalBilgiler = lazy(() => import("./pages/YasalBilgiler"));
 const NedenCbit = lazy(() => import("./pages/NedenCbit"));
 
 // Sayfa yüklenene kadar gösterilecek loading tasarımı
@@ -48,8 +47,7 @@ function AppRoutes() {
           element={ayarlar.haberlerAktif ? <Haberler /> : <Navigate to="/" replace />}
         />
         <Route path="/iletisim" element={<Iletisim />} />
-        <Route path="/cerez-politikasi" element={<CerezPolitikasi />} />
-        <Route path="/kisisel-verilerin-korunmasi" element={<KisiselVerilerinKorunmasi />} />
+        <Route path="/yasal-bilgiler" element={<YasalBilgiler />} />
       </Route>
     </Routes>
   );
